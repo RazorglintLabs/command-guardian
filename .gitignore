@@ -1,0 +1,31 @@
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Test / lint caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# Build artifacts
+*.egg-info/
+dist/
+build/
+
+# OS junk
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local audit data (created at runtime)
+# Uncomment if you don't want audit logs in version control:
+# ~/.command-guardian/

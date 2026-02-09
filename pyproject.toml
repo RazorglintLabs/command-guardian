@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "command-guardian"
+version = "0.1.0"
+description = "A seatbelt for your terminal — run commands safely with deny-by-default enforcement and hash-chained audit receipts."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [{name = "Junior"}]
+dependencies = [
+    "typer>=0.9,<1.0",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pytest-mock"]
+
+[project.scripts]
+guardian = "guardian.cli:app_entry"
+
+[tool.setuptools.packages.find]
+where = ["command_guardian"]
