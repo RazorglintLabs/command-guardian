@@ -1,3 +1,6 @@
+![CI](https://github.com/RazorglintLabs/command-guardian/actions/workflows/ci.yml/badge.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+
 # Command Guardian
 
 > A **seatbelt for your terminal** — run commands safely, block dangerous ones by default, require explicit authorization for risky actions, and emit verifiable hash-chained audit receipts.
