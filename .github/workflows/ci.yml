@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Run tests
+        run: |
+          python -m pytest -q
+
+      - name: Verify audit chain (allowed to be empty on CI)
+        shell: bash
+        run: |
+          set -e
+          out="$(guardian verify 2>&1 || true)"
+          echo "$out"
+          if echo "$out" | grep -qi "VERIFIED"; then
+            exit 0
+          fi
+          if echo "$out" | grep -qi "no receipts"; then
+            exit 0
+          fi
+          echo "guardian verify did not report VERIFIED or no-receipts; failing."
+          exit 1
