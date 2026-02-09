@@ -7,6 +7,8 @@
 
 **Local-first. No SaaS. No accounts. No cloud. Single-user CLI.**
 
+[![Download v1.0.0](https://img.shields.io/badge/Download-v1.0.0-blue)](https://github.com/RazorglintLabs/command-guardian/releases/tag/v1.0.0)
+
 ---
 
 ## Install
